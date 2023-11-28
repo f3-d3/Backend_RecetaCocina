@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "5cdefabc-952b-4871-adfd-ed61f6931a75",
+		"name": "Receta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8183076",
+		"_collection_link": "https://pagosincontactov3.postman.co/workspace/UNL~cc8a6494-e146-42e4-9552-55b6d3cdaf69/collection/8183076-5cdefabc-952b-4871-adfd-ed61f6931a75?action=share&source=collection_link&creator=8183076"
+	},
+	"item": [
+		{
+			"name": "authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"postman.setEnvironmentVariable(\"token\", responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\" : {{usuario}},\r\n    \"Password\" : \"123456\",\r\n    \"Email\" : {{correo}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}API/TOKEN/authenticate/",
+					"host": [
+						"{{url}}API"
+					],
+					"path": [
+						"TOKEN",
+						"authenticate",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Username\" : {{usuario}},\r\n    \"Password\" : \"123456\",\r\n    \"Email\" : {{correo}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}API/TOKEN/register/",
+					"host": [
+						"{{url}}API"
+					],
+					"path": [
+						"TOKEN",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User",
+						"value": "{{correo}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}api/Receta/GetAll",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"Receta",
+						"GetAll"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}CitaMedica/GetAll",
+							"host": [
+								"{{url}}CitaMedica"
+							],
+							"path": [
+								"GetAll"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Oct 2022 00:50:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"citaMedicaId\": 9,\n        \"citaMedicaLugar\": \"Hospital del Día\",\n        \"citaMedicaFecha\": \"2022-10-22T04:35:51.6972079\",\n        \"citaMedicaHora\": \"15:00\",\n        \"citaMedicaObservacion\": \"Venir en ayunas.\",\n        \"citaMedicaEstatus\": true,\n        \"doctor\": {\n            \"citaMedicaId\": 9,\n            \"dni\": 1715874998,\n            \"nombre\": \"Juan\",\n            \"apellido\": \"Veliz\",\n            \"especialidad\": \"Medicina General\"\n        },\n        \"paciente\": {\n            \"citaMedicaId\": 9,\n            \"dni\": 1715874998,\n            \"nombre\": \"Marcos\",\n            \"apellido\": \"Alvear\",\n            \"fechaNacimiento\": \"1992-01-31T00:00:00\"\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "User",
+						"value": "{{correo}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}api/Receta/GetById?Id=2",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"Receta",
+						"GetById"
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetAll",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}CitaMedica/GetAll",
+							"host": [
+								"{{url}}CitaMedica"
+							],
+							"path": [
+								"GetAll"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 26 Oct 2022 00:50:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"citaMedicaId\": 9,\n        \"citaMedicaLugar\": \"Hospital del Día\",\n        \"citaMedicaFecha\": \"2022-10-22T04:35:51.6972079\",\n        \"citaMedicaHora\": \"15:00\",\n        \"citaMedicaObservacion\": \"Venir en ayunas.\",\n        \"citaMedicaEstatus\": true,\n        \"doctor\": {\n            \"citaMedicaId\": 9,\n            \"dni\": 1715874998,\n            \"nombre\": \"Juan\",\n            \"apellido\": \"Veliz\",\n            \"especialidad\": \"Medicina General\"\n        },\n        \"paciente\": {\n            \"citaMedicaId\": 9,\n            \"dni\": 1715874998,\n            \"nombre\": \"Marcos\",\n            \"apellido\": \"Alvear\",\n            \"fechaNacimiento\": \"1992-01-31T00:00:00\"\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "User",
+						"value": "{{correo}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Id\": 0,\r\n\t\"Nombre\": \"Coca alicantina\",\r\n\t\"Ingredientes\": \"Masa para empanada, tomate, pimiento rojo, berenjena, aceitunas negras, sal, aceite de oliva.\",\r\n\t\"Instrucciones\": \"1. Estira la masa para empanada y colócala en una bandeja. 2. Cubre con rodajas de tomate, pimiento y berenjena. 3. Añade aceitunas negras y sal al gusto. 4. Riega con aceite de oliva y hornea hasta que la masa esté dorada.\",\r\n\t\"Publica\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/Receta",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"Receta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "User",
+						"value": "{{correo}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"nombre\": \"Arroz alicantino.\",\r\n    \"ingredientes\": \"300g de arroz, 200g de conejo, 200g de pollo, 100g de judías verdes, 1 tomate, 1 ramita de romero, 1 ramita de tomillo, azafrán, sal, aceite de oliva, 1.5L de caldo de ave\",\r\n    \"instrucciones\": \"En una paellera, sofríe el conejo y el pollo con aceite de oliva. Agrega las judías verdes y el tomate picado. Añade el arroz y rehoga. Incorpora el azafrán, el romero y el tomillo. Vierte el caldo caliente y cocina a fuego medio durante 18-20 minutos. Deja reposar antes de servir.\",\r\n    \"publica\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}api/Receta",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"Receta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "User",
+						"value": "{{correo}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{url}}api/Receta?Id=2",
+					"host": [
+						"{{url}}api"
+					],
+					"path": [
+						"Receta"
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
