@@ -47,7 +47,7 @@ namespace TokenApi.Controllers
         /// <returns>Resultado de la autenticación y token JWT en caso de éxito.</returns>
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody] AuthInfo user)
+        public IActionResult Authenticate([FromBody] AuthInfoCredential user)
         {
             string token = null;
             try
