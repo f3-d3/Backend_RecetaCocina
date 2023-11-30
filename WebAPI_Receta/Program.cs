@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Obtener la clave secreta para la autenticación JWT desde la configuración.
 var key = builder.Configuration.GetSection("JWTKey").Value;
+var tokenExpireHours = 1;
+int.TryParse(builder.Configuration.GetSection("TokenExpireHours").Value, out tokenExpireHours);
 
 // Añadir servicios al contenedor de dependencias.
 builder.Services.AddControllers().
@@ -52,7 +54,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Configurar el servicio de autenticación JWT como un servicio singleton.
-builder.Services.AddSingleton<IJwtAuthenticationService>(new JwtAuthenticationService(key));
+builder.Services.AddSingleton<IJwtAuthenticationService>(new JwtAuthenticationService(key, tokenExpireHours));
 
 var app = builder.Build();
 

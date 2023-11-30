@@ -34,13 +34,13 @@ namespace WebAPI_Receta.Controllers
         /// </summary>
         /// <returns>Lista de recetas.</returns>
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
             var listReceta = new List<Receta>();
             try
             {
                 var user = GetUsername();
-                listReceta = Repository._Receta.GetItems().Where(x => x.Publica || (!x.Publica && x.Username.Equals(user))).OrderByDescending(x=>x.Id).ToList();
+                listReceta = Repository._Receta.GetItems().Where(x => x.Publica || (!x.Publica && x.Username.Equals(user))).OrderByDescending(x => x.Id).ToList();
 
                 if (!listReceta.Any())
                 {
@@ -61,7 +61,7 @@ namespace WebAPI_Receta.Controllers
         /// <param name="Id">Identificador único de la receta.</param>
         /// <returns>La receta con el identificador proporcionado.</returns>
         [HttpGet("GetById")]
-        public async Task<IActionResult> GetById(long Id)
+        public IActionResult GetById(long Id)
         {
             var citaMedica = new Receta();
             try
@@ -87,7 +87,7 @@ namespace WebAPI_Receta.Controllers
         /// <param name="receta">Datos de la receta a crear.</param>
         /// <returns>La receta creada.</returns>
         [HttpPost]
-        public async Task<IActionResult> Post(Receta receta)
+        public IActionResult Post(Receta receta)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace WebAPI_Receta.Controllers
         /// <param name="receta">Datos actualizados de la receta.</param>
         /// <returns>La receta actualizada.</returns>
         [HttpPut]
-        public async Task<IActionResult> Put(Receta receta)
+        public IActionResult Put(Receta receta)
         {
             try
             {
@@ -140,7 +140,7 @@ namespace WebAPI_Receta.Controllers
         /// <param name="Id">Identificador único de la receta a eliminar.</param>
         /// <returns>Identificador de la receta eliminada.</returns>
         [HttpDelete]
-        public async Task<IActionResult> Delete(long Id)
+        public IActionResult Delete(long Id)
         {
             try
             {

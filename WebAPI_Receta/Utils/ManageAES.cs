@@ -49,7 +49,7 @@ namespace WebAPI_Receta_Core.Utils
         {
             byte[] encrypted;
             // Create a new AesManaged.
-            using (AesManaged aes = new AesManaged())
+            using (var aes = new AesManaged())
             {
                 // Create encryptor
                 ICryptoTransform encryptor = aes.CreateEncryptor(Key, IV);

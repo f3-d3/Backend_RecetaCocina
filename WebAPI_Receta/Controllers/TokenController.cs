@@ -7,9 +7,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
 using WebAPI_Receta.Models;
 using WebAPI_Receta.Repositories;
-using Microsoft.AspNetCore.Hosting;
 using WebAPI_Receta.Auth;
-using static System.Collections.Specialized.BitVector32;
 
 namespace TokenApi.Controllers
 {
@@ -49,7 +47,7 @@ namespace TokenApi.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] AuthInfoCredential user)
         {
-            string token = null;
+            string? token = null;
             try
             {
                 var authInfos = Repository._AuthInfo.GetItems();
@@ -117,7 +115,6 @@ namespace TokenApi.Controllers
             }
             catch (Exception ex)
             {
-                Repository.ADBRollback();
                 return Conflict(ex);
             }
             return Created(string.Empty, user);

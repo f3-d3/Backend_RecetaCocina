@@ -14,10 +14,12 @@ namespace WebAPI_Receta.Auth
     {
 
         private readonly string _key;
+        private readonly int _tokenExpireHours;
 
-        public JwtAuthenticationService (string key)
+        public JwtAuthenticationService (string key, int tokenExpireHours)
         {
             _key = key;
+            _tokenExpireHours = tokenExpireHours;
         }
 
         public string Authenticate(string username, string password)
@@ -32,7 +34,7 @@ namespace WebAPI_Receta.Auth
                     {
                         new Claim(ClaimTypes.Name, username)
                     }),
-                Expires = DateTime.UtcNow.AddHours(1),
+                Expires = DateTime.UtcNow.AddHours(_tokenExpireHours),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), 
                 SecurityAlgorithms.HmacSha256Signature)
             };

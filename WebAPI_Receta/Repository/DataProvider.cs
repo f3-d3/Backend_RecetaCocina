@@ -8,7 +8,7 @@ namespace WebAPI_Receta.Repositories
 {
     public class DataProvider : Repository
     {
-        public static DataProvider Instance { get; set; }
+        public static DataProvider? Instance { get; set; }
         public static void CreateInstance(string dbPath, string password)
         {
             Instance = new DataProvider(dbPath, password);

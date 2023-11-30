@@ -10,12 +10,12 @@ namespace WebAPI_Receta.Repositories
     {
         protected SQLiteConnection ADB;
 
-        public BaseRepository(string dbLocation, string password) : base(dbLocation, password)
-        {
-            new AccesoBaseDatos(dbLocation, password);
-        }
+        //public BaseRepository(string dbLocation, string password) : base(dbLocation, password)
+        //{
+        //    new AccesoBaseDatos(dbLocation, password);
+        //}
 
-        public BaseRepository() : base(){}
+        //public BaseRepository() : base(){}
 
         public BaseRepository(SQLiteConnection ADB){
             this.ADB = ADB;
