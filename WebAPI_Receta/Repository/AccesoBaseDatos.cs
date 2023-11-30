@@ -17,13 +17,10 @@ namespace WebAPI_Receta.Repositories
 
         private void CreateTable(string dbPath, string password)
         {
-            using (var ABD = new SQLiteConnection(dbPath))
-            {
-                ABD.Execute($"PRAGMA key = '{password}';");
-                ABD.CreateTable<AuthInfo>();
-                ABD.CreateTable<Receta>();
-
-            }
+            using var ABD = new SQLiteConnection(dbPath);
+            ABD.Execute($"PRAGMA key = '{password}';");
+            ABD.CreateTable<AuthInfo>();
+            ABD.CreateTable<Receta>();
         }
     }
 }
