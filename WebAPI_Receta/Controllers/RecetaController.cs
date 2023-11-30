@@ -40,7 +40,7 @@ namespace WebAPI_Receta.Controllers
             try
             {
                 var user = GetUsername();
-                listReceta = Repository._Receta.GetItems().Where(x => x.Publica || (!x.Publica && x.Username.Equals(user))).ToList();
+                listReceta = Repository._Receta.GetItems().Where(x => x.Publica || (!x.Publica && x.Username.Equals(user))).OrderByDescending(x=>x.Id).ToList();
 
                 if (!listReceta.Any())
                 {
